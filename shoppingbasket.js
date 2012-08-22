@@ -13,11 +13,14 @@
 	/* ShoppingBasket constructor (not a literal)	*/
 	function ShoppingBasket() {
 		var item;
+		
 		return {
 			scan: function(itemAdded){item = itemAdded},
 			getTotal: function(){
+				if(item=='A') return 0.5;
 				if(item=='B') return 0.3;
-				return 0.5;
+				if(item=='C') return 0.2;
+				if(item=='D') return 0.15;
 			}
 			
 		}
