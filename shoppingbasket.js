@@ -11,15 +11,17 @@
 	*/
 	
 	/* ShoppingBasket constructor (not a literal)	*/
-	function ShoppingBasket() {
+	function ShoppingBasket(itemDetails) {
 		var item;
-		var itemsAndPrices = {'A':0.50,'B':0.30,'C':0.20,'D':0.15};
 		var total = 0.0;
+	 
+ 		
 		return {
-			scan: function(itemAdded){item = itemAdded; total+=itemsAndPrices[item]},
+			scan: function(itemAdded){
+				total+=itemDetails[itemAdded]
+			},
 			getTotal: function(){
- 
-				 return total.toFixed(2);
+ 				 return total.toFixed(2);
 			}
 			
 		}
