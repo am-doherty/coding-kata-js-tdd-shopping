@@ -13,14 +13,13 @@
 	/* ShoppingBasket constructor (not a literal)	*/
 	function ShoppingBasket() {
 		var item;
-		
+		var itemsAndPrices = {'A':0.50,'B':0.30,'C':0.20,'D':0.15};
+		var total = 0.0;
 		return {
-			scan: function(itemAdded){item = itemAdded},
+			scan: function(itemAdded){item = itemAdded; total+=itemsAndPrices[item]},
 			getTotal: function(){
-				if(item=='A') return 0.5;
-				if(item=='B') return 0.3;
-				if(item=='C') return 0.2;
-				if(item=='D') return 0.15;
+ 
+				 return total.toFixed(2);
 			}
 			
 		}
