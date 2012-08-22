@@ -10,29 +10,29 @@
 	   *	   Purchase 2 of ItemB for 0.45
 	*/
 	
-	/* ShoppingBasket constructor (not a literal)	*/
+	/* ShoppingBasket constructor */
 	function ShoppingBasket(itemDetails) {
-		var item;
 		var total = 0.0;
 		var numItemsScanned = 0;
- 		
+		var numTypesScanned = [];
 		return {
 			scan: function(itemAdded){
 				numItemsScanned++;
-				total+=itemDetails[itemAdded]
+				(typeof numTypesScanned[itemAdded] === "undefined") ? numTypesScanned[itemAdded]=1 : numTypesScanned[itemAdded]+=1 ;
+				total+=itemDetails[itemAdded];
 			},
 			getTotal: function(){
-				//shortest TDD route to matching test 7, the A+A+A offer
-				if (total === 1.5 &  numItemsScanned == 3) {
-					return 1.30;
-				}
-				//shortest TDD route to matching test 8, the B+B offer
-				if (total === .6 &  numItemsScanned == 2) {
-					return 0.45;
-				}				
+				//shortest TDD route to matching test 9, the A+B+B offer
+				if (numTypesScanned['A'] >= 3) {
+					return (total-.20).toFixed(2);
+				}	
+				//shortest TDD route to matching test 9, the A+B+B offer
+				if (numTypesScanned['B'] >= 2) {
+					return (total-.15).toFixed(2);
+				}			
 				// all other cases
  				return total.toFixed(2);
 			}
-			
 		}
+
 	};

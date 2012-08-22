@@ -29,14 +29,13 @@ test("I scan multiple, varied items", function() {
 		var basket = new ShoppingBasket(itemDetails);
 		basket.scan("A"); 
 		basket.scan("B");
-		basket.scan("C");		
-		basket.scan("B");
+		basket.scan("C");
 		basket.scan("C"); 
 		basket.scan("C"); 
 		basket.scan("D");		
 		basket.scan("A"); 
 		basket.scan("D"); 
-		equal(basket.getTotal(),2.50, "I scan..A,B,C,B,C,C,D,A,D and derive a total of 2.50");
+		equal(basket.getTotal(),2.20, "I scan..A,B,C,B,C,C,D,A,D and derive a total of 2.20");
 });
 test("I scan three A items", function() {	 
 		var basket = new ShoppingBasket(itemDetails);
@@ -50,6 +49,30 @@ test("I scan two B items", function() {
 		basket.scan("B"); 
 		basket.scan("B");
 		equal(basket.getTotal(),.45, "I scan two B's and derive a total of 0.45");
+});
+test("I scan three items, where the combination triggers an offer condition (2 b items)", function() {	 
+		var basket = new ShoppingBasket(itemDetails);
+		basket.scan("A"); 		
+		basket.scan("B"); 
+		basket.scan("B");
+		equal(basket.getTotal(),.95, "I scan three items, where the combination triggers an offer condition (2 b items), expect a total of .95");
+});
+test("I scan three items, where the combination triggers an offer condition (2 b items)", function() {	 
+		var basket = new ShoppingBasket(itemDetails);
+		basket.scan("A"); 		
+		basket.scan("A"); 
+		basket.scan("B"); 
+		basket.scan("D"); 
+		basket.scan("A");
+		equal(basket.getTotal(),1.75, "I scan five items, where the combination triggers an offer condition (3 A items), expect a total of 1.75");
+});
+test("I scan four items of the same type, where the combination triggers an offer condition (3 A items)", function() {	 
+		var basket = new ShoppingBasket(itemDetails);
+		basket.scan("A"); 		
+		basket.scan("A"); 
+		basket.scan("A"); 
+		basket.scan("A");
+		equal(basket.getTotal(),1.80, "I scan four items of the same type, where the combination triggers an offer condition (3 A items), expect a total of 1.80");
 });
 
 
