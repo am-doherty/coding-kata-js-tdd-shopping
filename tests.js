@@ -14,18 +14,18 @@ test("I scan one of Item 'C'", function() {
 		equal(basket.getTotal(),0.2, "I scan a single item 'C' into an empty basket, the basket total then equals 0.2");
 });
 test("I scan one of Item 'D'", function() {		
-			var basket = new ShoppingBasket();
+		var basket = new ShoppingBasket();
 		basket.scan("D");
 		equal(basket.getTotal(),0.15, "I scan a single item 'D' into an empty basket, the basket total then equals 0.15");
 });
 test("I scan two items, an 'A' and a 'B'", function() {		
-			var basket = new ShoppingBasket();
+		var basket = new ShoppingBasket();
 		basket.scan("A");
 		basket.scan("B");
 		equal(basket.getTotal(),0.8, "I scan a single item 'D' into an empty basket, the basket total then equals 0.80");
 });
 test("I scan multiple, varied items", function() {		
-			var basket = new ShoppingBasket();
+		var basket = new ShoppingBasket();
 		basket.scan("A"); 
 		basket.scan("B");
 		basket.scan("C");		
