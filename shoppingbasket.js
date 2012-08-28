@@ -18,19 +18,23 @@ function ShoppingBasket(details) {
 	var total = 0.0;
 	var numItemsScanned = 0;
 	var numTypesScanned = [];
+	console.log("New ShoppingBasket created");
 	return {
 		scan: function(itemAdded){
+			console.log("scanning: "+itemAdded);
 			numItemsScanned++;
 			(typeof numTypesScanned[itemAdded] === "undefined") ? numTypesScanned[itemAdded]=1 : numTypesScanned[itemAdded]+=1;
 			total+=details[itemAdded].price;
 			/* Check current count of this kind of item and apply discount, if any  */
 			if (details[itemAdded].discountmultiple) {
 				if (numTypesScanned[itemAdded] % details[itemAdded].discountmultiple == 0) {
+					console.log("Applying discount: - "+details[itemAdded].discount.toFixed(2));
 					total -= details[itemAdded].discount;
 				}
 			}
 		},
 		getTotal: function(){
+			console.log("--> items scanned: "+numItemsScanned+", total: "+total.toFixed(2));
 			return total.toFixed(2);
 		}
 	}
