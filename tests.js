@@ -1,4 +1,3 @@
-var itemDetails = {'A':0.50,'B':0.30,'C':0.20,'D':0.15};
 test("I scan one of Item 'A'", function() {
 		var basket = new ShoppingBasket(itemDetails);
 		basket.scan("A");
@@ -74,10 +73,29 @@ test("I scan four items of the same type, where the combination triggers an offe
 		basket.scan("A");
 		equal(basket.getTotal(),1.80, "I scan four items of the same type, where the combination triggers an offer condition (3 A items), expect a total of 1.80");
 });
-
-
- 
-
-
-
- 
+test("I scan seven items of the same type, where the combination triggers an offer condition twice", function() {	 
+		var basket = new ShoppingBasket(itemDetails);
+		basket.scan("A"); 		
+		basket.scan("A"); 
+		basket.scan("A"); 
+		basket.scan("A");
+		basket.scan("A"); 
+		basket.scan("A"); 
+		basket.scan("A");
+		equal(basket.getTotal(),3.10, "I scan four items of the same type, where the combination triggers an offer condition twice, expect a total of 3.10");
+});
+test("I scan seven items of the 'A' type, three of the B type, triggering the 'A' offer twice and the 'B' offer twice", function() {	 
+		var basket = new ShoppingBasket(itemDetails);
+		basket.scan("A"); 		
+		basket.scan("A"); 
+		basket.scan("A"); 
+		basket.scan("B"); 
+		basket.scan("B"); 
+		basket.scan("B"); 
+		basket.scan("B"); 
+		basket.scan("A");
+		basket.scan("A"); 
+		basket.scan("A"); 
+		basket.scan("A");
+		equal(basket.getTotal(),4.00, "I scan seven items of the 'A' type, three of the B type, triggering the 'A' offer twice and the 'B' offer twice, expect a total of 4.00");
+});
